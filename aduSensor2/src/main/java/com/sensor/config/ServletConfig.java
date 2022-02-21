@@ -51,7 +51,7 @@ public class ServletConfig implements WebMvcConfigurer {	// view resolver, resou
 	@Bean
 	public CommonInterceptor commonInterceptor() {
 		System.err.println(1);
-		System.err.println(23);
+		System.err.println(213);
 		return new CommonInterceptor();
 	}
 
