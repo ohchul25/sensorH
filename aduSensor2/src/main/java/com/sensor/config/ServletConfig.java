@@ -20,6 +20,8 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import com.sensor.interceptor.CommonInterceptor;
+
 import org.springframework.stereotype.Controller;
 
 @Configuration
@@ -44,6 +46,11 @@ public class ServletConfig implements WebMvcConfigurer {	// view resolver, resou
         registry.viewResolver(new BeanNameViewResolver());
 		registry.enableContentNegotiation(new MappingJackson2JsonView());
 		registry.jsp("/WEB-INF/views/",".jsp");
+	}
+	
+	@Bean
+	public CommonInterceptor commonInterceptor() {
+		return new CommonInterceptor();
 	}
 
     /**

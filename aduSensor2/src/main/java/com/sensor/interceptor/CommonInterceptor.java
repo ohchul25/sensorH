@@ -52,7 +52,6 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	public String getMenuNm(String menuId, String groupCode) throws Exception{
 		String menuNm = "";
 
-
 		return menuNm;
 	}
 
