@@ -1,0 +1,66 @@
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- 기본 -->
+    <definition name="default_layout" template="/WEB-INF/tiles/template/default_template.jsp">
+        <put-attribute name="title" value="LG U+" />
+        <put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
+        <put-attribute name="left"   value="/WEB-INF/tiles/template/left.jsp" />
+        <put-attribute name="body"   value="" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+    </definition>
+
+    <!-- empty ui  -->
+    <definition name="empty_layout" template="/WEB-INF/tiles/template/empty_template.jsp">
+        <put-attribute name="body"   value="" />
+    </definition>
+
+    <!-- main ui  -->
+    <definition name="main_layout" template="/WEB-INF/tiles/template/main_template.jsp">
+        <put-attribute name="body"   value="" />
+    </definition>
+
+    <!-- blank ui  -->
+    <definition name="blank_layout" template="/WEB-INF/tiles/template/blank_template.jsp">
+        <put-attribute name="body"   value="" />
+    </definition>
+
+    <!--메인 -->
+    <definition name="login/login" extends="main_layout">
+        <put-attribute name="body" value="/WEB-INF/views/login/login.jsp" />
+    </definition>
+
+	<!-- 에러페이지 -->
+    <definition name="common/error/*" extends="blank_layout">
+        <put-attribute name="body" value="/WEB-INF/views/common/error/{1}.jsp" />
+    </definition>
+
+    <!-- API 본인확인 -->
+    <definition name="api/*" extends="blank_layout">
+        <put-attribute name="body" value="/WEB-INF/views/api/{1}.jsp" />
+    </definition>
+
+    <!-- 팝업 -->
+    <definition name="pop/*" extends="empty_layout">
+        <put-attribute name="body" value="/WEB-INF/views/pop/{1}.jsp" />
+    </definition>
+
+	<!-- 공통 화면 -->
+    <definition name="*/*" extends="default_layout">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+  	</definition>
+
+  	<!-- 공통 화면 -->
+    <definition name="*/*/*" extends="default_layout">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+  	</definition>
+
+  	<!-- 공통 화면 -->
+    <definition name="*/*/*/*" extends="default_layout">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+  	</definition>
+
+</tiles-definitions>
