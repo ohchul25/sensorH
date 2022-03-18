@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MenuDao">
+
+	<select id="selectMnList" resultType="com.sensor.source.menu.model.MenuVO">
+		SELECT
+			MENU_ID ,
+			DRCTRY_AT ,
+			UPPER_MENU_ID ,
+			SJ ,
+			DC ,
+			WEB_PATH ,
+			DP ,
+			SORT_ORDR ,
+			USE_AT ,
+			REGISTER_ID ,
+			REGIST_DT ,
+			UPDUSR_ID ,
+			UPDT_DT
+		FROM
+			HONGGO.HG_MENU
+	</select>
+	
+	<select id="selectDetail" parameterType="com.sensor.source.menu.model.MenuVO" resultType="com.sensor.source.menu.model.MenuVO">
+		SELECT
+			MENU_ID ,
+			DRCTRY_AT ,
+			UPPER_MENU_ID ,
+			SJ ,
+			DC ,
+			WEB_PATH ,
+			DP ,
+			SORT_ORDR ,
+			USE_AT ,
+			REGISTER_ID ,
+			REGIST_DT ,
+			UPDUSR_ID ,
+			UPDT_DT
+		FROM
+			HONGGO.HG_MENU
+		WHERE
+			MENU_ID = #{menuId}
+	</select>
+
+</mapper>

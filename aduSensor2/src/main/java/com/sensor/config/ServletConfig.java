@@ -42,16 +42,31 @@ public class ServletConfig implements WebMvcConfigurer {	// view resolver, resou
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-        //registry.viewResolver(new TilesViewResolver());
+        registry.viewResolver(new TilesViewResolver());
         registry.viewResolver(new BeanNameViewResolver());
 		registry.enableContentNegotiation(new MappingJackson2JsonView());
 		registry.jsp("/WEB-INF/views/",".jsp");
 	}
 	
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+    	final TilesConfigurer configurer = new TilesConfigurer();
+    	configurer.setDefinitions(new String[] {"/WEB-INF/tiles/tiles.xml"});
+    	configurer.setCheckRefresh(true);
+    	return configurer;
+    }
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	  // Static ressources from both WEB-INF and webjars
+      registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCachePeriod(CACHE_PERIOD);
+      registry.addResourceHandler("/css/**").addResourceLocations("/static/css/").setCachePeriod(CACHE_PERIOD);
+      registry.addResourceHandler("/images/**").addResourceLocations("/static/images/").setCachePeriod(CACHE_PERIOD);
+      registry.addResourceHandler("/js/**").addResourceLocations("/static/js/").setCachePeriod(CACHE_PERIOD);
+      registry.addResourceHandler("/html/**").addResourceLocations("/static/html/").setCachePeriod(CACHE_PERIOD);
+      registry.addResourceHandler("/lib/**").addResourceLocations("/static/lib/").setCachePeriod(CACHE_PERIOD);
+  }
 	@Bean
 	public CommonInterceptor commonInterceptor() {
-		System.err.println(1);
-		System.err.println(2133);
 		return new CommonInterceptor();
 	}
 

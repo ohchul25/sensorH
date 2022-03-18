@@ -6,7 +6,7 @@
 
     <!-- 기본 -->
     <definition name="default_layout" template="/WEB-INF/tiles/template/default_template.jsp">
-        <put-attribute name="title" value="LG U+" />
+        <put-attribute name="title" value="AGR!P" />
         <put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
         <put-attribute name="left"   value="/WEB-INF/tiles/template/left.jsp" />
         <put-attribute name="body"   value="" />
